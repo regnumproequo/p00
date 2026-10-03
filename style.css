@@ -68,6 +68,9 @@ h1 {
   color: #0d1117;
   text-decoration: none;
   font-weight: 700;
+  border: none;
+  font: inherit;
+  cursor: pointer;
 }
 
 .button.secondary {
