@@ -2,7 +2,7 @@
 
 Early development repository for a public web app.
 
-Planned domain idea: p******.h**
+Planned domain idea: phey.app
 
 ## Status
 
