@@ -1,0 +1,35 @@
+{
+  "description": "Official second-vote results; 2021 includes the repeat election in parts of Berlin on 2024-02-11. Union combines CDU and CSU. Other parties are calculated as the remainder of valid second votes. BSW did not contest the 2021 election.",
+  "elections": {
+    "2021": {
+      "source_url": "https://www.bundeswahlleiterin.de/bundestagswahlen/2021/ergebnisse/bund-99.html",
+      "eligible_voters": 61172771,
+      "voters": 46707343,
+      "valid_second_votes": 46298387,
+      "party_votes": {
+        "union": 11177747,
+        "spd": 11901558,
+        "gruene": 6814408,
+        "fdp": 5291013,
+        "afd": 4809233,
+        "linke": 2255864,
+        "bsw": 0
+      }
+    },
+    "2025": {
+      "source_url": "https://www.bundeswahlleiterin.de/bundestagswahlen/2025/ergebnisse/bund-99.html",
+      "eligible_voters": 60510631,
+      "voters": 49928653,
+      "valid_second_votes": 49649512,
+      "party_votes": {
+        "union": 14160402,
+        "spd": 8149124,
+        "gruene": 5762380,
+        "fdp": 2148757,
+        "afd": 10328780,
+        "linke": 4356532,
+        "bsw": 2472947
+      }
+    }
+  }
+}
