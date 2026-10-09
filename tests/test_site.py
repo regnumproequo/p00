@@ -27,7 +27,7 @@ class Page(HTMLParser):
 class WebsiteChecks(unittest.TestCase):
     def test_public_pages_and_references(self):
         pages = [*ROOT.glob('*.html'), *ROOT.glob('output/*.html')]
-        self.assertEqual(len(pages), 8)
+        self.assertEqual(len(pages), 9)
         for path in pages:
             with self.subTest(page=path.name):
                 text = path.read_text(encoding='utf-8')
