@@ -103,7 +103,7 @@ Terms identify GitHub, Inc.; its general privacy notice also identifies GitHub B
 The notice describes the published hosting/transfers information without asserting
 an account-specific DPA or a particular controller/processor allocation.
 
-<!-- release-review-required: Confirm the GitHub agreement/roles and any Article 28 requirement applicable to this account; public documentation does not establish them. -->
+<!-- release-review-required: Personal account under standard GitHub terms confirmed. Clarify Pages visitor-data controller/processor roles and, if applicable, how an Article 28 agreement is concluded for this account. -->
 
 This account-specific hosting question remains a publication blocker requiring
 review of the actual account agreements or clarification from GitHub. It has been
@@ -125,9 +125,13 @@ Sources rechecked: [Terms of Service](https://docs.github.com/en/site-policy/git
 [privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement),
 [Pages data collection](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection),
 and [DPA](https://github.com/customer-terms/github-data-protection-agreement).
-First confirm whether this is a personal account under standard terms or an
-organization-provided account with a separate agreement. If those terms still
-leave Pages roles unclear, ask GitHub through its
+The owner confirmed this is a personal account under the standard GitHub terms,
+not an employer/university account or a separate Enterprise/customer agreement.
+The applicable published standard terms have therefore been identified; no
+account-specific DPA was supplied or established by this review. This does not
+prove either that an Article 28 agreement is unnecessary or that one is absent.
+The reviewed documents do not settle the role allocation for all Pages visitor
+processing. To resolve that remaining question, ask GitHub through its
 [privacy support form](https://support.github.com/contact/privacy):
 For this account's custom-domain Pages hosting, which entity and terms apply,
 which visitor-data operations are performed as controller or processor, and,
