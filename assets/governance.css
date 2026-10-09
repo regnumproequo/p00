@@ -1,0 +1,23 @@
+/* Shared by the landing page, legal notices and notebook exports. */
+:focus-visible { outline: 3px solid #8ecae6; outline-offset: 4px; }
+.site-footer {
+  box-sizing: border-box;
+  padding: 1.25rem 1rem;
+  border-top: 1px solid #59636e;
+  background: #0d1117;
+  color: #c7d0dd;
+  font: 1rem/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-align: center;
+}
+.site-footer a { display: inline-block; padding: 0.6rem 0.25rem; color: #8ecae6; text-underline-offset: 0.2em; }
+.site-footer a:hover { color: #fff; }
+.plot-page h1.page-heading { margin: 0 0 1rem; font-size: clamp(1.4rem, 4vw, 2rem); line-height: 1.3; }
+.plot-scroll:focus-visible, .scroll:focus-visible { outline-offset: -3px; }
+.legal-page { max-width: 52rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; line-height: 1.7; overflow-wrap: anywhere; }
+.legal-page h1 { margin: 1.5rem 0; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.2; letter-spacing: -0.03em; }
+.legal-page h2 { margin-top: 2rem; font-size: 1.3rem; line-height: 1.4; }
+.legal-page a { color: #8ecae6; text-underline-offset: 0.2em; }
+.legal-page address { font-style: normal; }
+.review-note { padding: 1rem; border: 1px solid #d4a72c; border-radius: 0.4rem; background: #27220f; color: #fff0bc; }
+.placeholder { font-weight: 650; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
