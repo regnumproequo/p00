@@ -1,9 +1,6 @@
-# Internal maintenance material must not become additional public website pages.
-# This only affects a future approved Pages/Jekyll build; it does not deploy.
+# Keep development and maintenance files out of the published website.
 exclude:
   - GOVERNANCE.md
-  - GOVERNANCE_REVIEW.md
   - README.md
-  - scripts
-  - tests
+  - site_export.py
   - requirements.txt

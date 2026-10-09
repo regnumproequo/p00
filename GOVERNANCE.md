@@ -56,20 +56,19 @@ email enquiries remain a separate processing activity.
 
 ## Maintenance and release
 
-Develop on feature branches; this review is on `feature/minimal-governance`.
-Notebook export cells call `scripts/site_export.py`; change the shared footer in
-`_includes/legal-footer.html` and run `python scripts/site_export.py` to refresh
-existing pages. Run `python -m unittest discover -s tests` and
-`python scripts/site_export.py --check` after exports or layout changes.
+Develop on feature branches and review changes before merging into `main`, the
+production GitHub Pages branch. Pushing `main` can deploy the website.
+
+Notebook export cells call `site_export.py`. Change the shared footer in
+`_includes/legal-footer.html` and run `python site_export.py` to refresh existing
+pages. Run `python site_export.py --check` after exports or layout changes.
+Use the project's Python virtual environment with the pinned requirements.
 
 Keep contact data accurate. Review both legal pages when content, email, hosting,
-monetization or dependencies change. Confirm legal links on every page, mobile
-layout and plot interactions. Legal-page placeholders are completed and the
-hosting review is provisionally resolved on the basis above. Review
-[GOVERNANCE_REVIEW.md](GOVERNANCE_REVIEW.md), then run
-`python scripts/check_release.py`. This local check is not a GitHub deployment gate.
-Only after explicit owner approval may changes be committed, pushed or merged into
-`main`, which is the intended production Pages source. No deployment is part of this task.
+monetization or dependencies change. Before publishing, check legal links on every
+page, local dependency loading, mobile layout and plot interactions. Review new
+third-party requests and browser storage. The hosting assessment above applies
+only while its conditions continue to hold.
 
 This is internal maintenance documentation, excluded from the Jekyll site; a public
 GitHub repository can still expose its source. It is not a compliance guarantee.

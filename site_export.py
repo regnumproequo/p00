@@ -7,7 +7,7 @@ from pathlib import Path
 import argparse
 import re
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parent
 VERSION = "4.1.1"
 PLOTLY_URL = f"/assets/vendor/plotly-{VERSION}.min.js"
 HEAD = '<meta name="referrer" content="no-referrer">\n  <link rel="stylesheet" href="/assets/governance.css">'
@@ -79,7 +79,7 @@ def main():
             if not args.check:
                 path.write_text(expected, encoding='utf-8', newline='\n')
     if args.check and stale:
-        raise SystemExit('Run python scripts/site_export.py to update: ' + ', '.join(stale))
+        raise SystemExit('Run python site_export.py to update: ' + ', '.join(stale))
     print('Legal navigation is current.' if args.check else 'Updated local pages and Plotly bundle.')
 
 

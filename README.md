@@ -1,16 +1,18 @@
-# p00
+# phey.app
 
-Early development repository for a public web app.
+Personal academic projects, research and interactive Plotly visualizations.
+Static HTML, CSS and JavaScript hosted through GitHub Pages at https://phey.app.
 
-Planned domain idea: phey.app
+## Development
 
-## Status
+Use the Python environment in `requirements.txt` to run the notebooks. Their
+exports go to `output/`; `site_export.py` keeps Plotly local and adds the shared
+legal footer. After changing the footer, run `python site_export.py`. Check
+existing exports with `python site_export.py --check`.
 
-Initial local landing page created with HTML and CSS.
+Preview from the repository root with
+`python -m http.server 8000 --bind 127.0.0.1` so absolute links and assets resolve.
+See [GOVERNANCE.md](GOVERNANCE.md) for privacy, security and maintenance guidance.
 
-## Local governance review
-
-See [GOVERNANCE.md](GOVERNANCE.md) for maintenance and export instructions and
-[GOVERNANCE_REVIEW.md](GOVERNANCE_REVIEW.md) for findings and publication blockers.
-Serve the repository root (for example `python -m http.server 8000 --bind 127.0.0.1`)
-to preview absolute legal links and local assets. Legal pages are local drafts.
+Develop on feature branches. Review before merging into `main`, which publishes
+the production website through GitHub Pages.
