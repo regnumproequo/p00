@@ -19,6 +19,29 @@ generates five Plotly pages in `output/`. No application server or visitor datab
   duties; this practice was confirmed by the owner. Review changes to this setup.
   Publish aggregate/synthetic research data only after checking disclosure rights.
 
+## GDPR — GitHub Pages Hosting
+
+The [BayLDA guidance of 16 May 2019](https://www.lda.bayern.de/media/veroeffentlichungen/FAQ_Hosting_keine_Auftragsverarbeitung.pdf)
+treats purely static hosting without user tracking or personal page-access data
+flowing to the operator as outside Article 28 commissioned processing. Required
+IP processing for the host's security does not alone establish that relationship.
+
+The repository review confirms static HTML/CSS/JavaScript, local Plotly and
+offline notebook generation; no server-side accounts, personalized backend,
+analytics, tracking, forms, embeds or visitor-log collection/integration were
+found. Prior browser checks of all eight pages at two widths found no external
+requests, cookies or browser-storage accesses. GitHub documents visitor-IP
+security logging; no mechanism providing personal Pages access logs to the
+operator was identified in the repository or reviewed Pages documentation.
+Authenticated account settings and provider-internal processing were not inspected.
+
+On this evidence, a separate Article 28 AVV is provisionally not considered
+necessary for the current basic Pages hosting configuration, subject to actual
+technical and contractual arrangements. This is an application of general
+guidance, not BayLDA approval of GitHub or a compliance guarantee. Reassess if
+tracking, visitor-log access, server-side features or hosting arrangements change;
+email enquiries remain a separate processing activity.
+
 ## Security and dependencies
 
 - Never store credentials in HTML, notebooks, outputs or Git. Keep secrets outside
@@ -41,9 +64,9 @@ existing pages. Run `python -m unittest discover -s tests` and
 
 Keep contact data accurate. Review both legal pages when content, email, hosting,
 monetization or dependencies change. Confirm legal links on every page, mobile
-layout and plot interactions. Legal-page placeholders have been completed, but
-the account-specific hosting review remains open. Resolve the publication items
-in [GOVERNANCE_REVIEW.md](GOVERNANCE_REVIEW.md), then run
+layout and plot interactions. Legal-page placeholders are completed and the
+hosting review is provisionally resolved on the basis above. Review
+[GOVERNANCE_REVIEW.md](GOVERNANCE_REVIEW.md), then run
 `python scripts/check_release.py`. This local check is not a GitHub deployment gate.
 Only after explicit owner approval may changes be committed, pushed or merged into
 `main`, which is the intended production Pages source. No deployment is part of this task.

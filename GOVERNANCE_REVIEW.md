@@ -1,6 +1,6 @@
 # Local governance review — 9 October 2026
 
-**Ready for code/content review, not website publication.** Work is on
+**Ready for owner release review; no deployment is authorized.** Work is on
 `feature/minimal-governance`. No identity or address was inferred from Git metadata.
 
 ## Changes
@@ -49,8 +49,9 @@ names GitHub, Inc. and GitHub B.V., international processing, SCCs and DPF, but
 does not give a Pages-specific log-retention period. Its general descriptions do
 not establish this account's contract, roles or safeguards. The published
 [DPA](https://github.com/customer-terms/github-data-protection-agreement) forms
-part of a customer agreement; its applicability was not established. These are
-explicit review items in the privacy draft, not invented assurances.
+part of a customer agreement; its applicability was not established. No DPA or
+fixed retention period is asserted. The basic hosting AVV question is now
+provisionally resolved using BayLDA guidance, as recorded in `GOVERNANCE.md`.
 
 ## Legal assessment and publication blockers
 
@@ -79,8 +80,8 @@ explicit review items in the privacy draft, not invented assurances.
   flag a contradiction for review before omitting required provider information.
 - **Privacy:** the draft covers controller, hosting/access data, purposes,
   Article 6(1)(f) interests, recipients/transfers, retention uncertainty, email,
-  browser technologies, rights/objection and complaints. Resolve the hosting
-  items above before release. No individual research records or indirect
+  browser technologies, rights/objection and complaints. The hosting assessment
+  below supports the current notice without a claimed DPA. No individual research records or indirect
   collection were identified in the aggregate/synthetic datasets; Article 14
   needs reassessment if that changes. [Articles 12–14 guidance](https://www.datenschutzkonferenz-online.de/media/kp/dsk_kpnr_10.pdf).
 - **Accessibility:** no covered consumer service or contracting flow was found
@@ -88,10 +89,10 @@ explicit review items in the privacy draft, not invented assurances.
   On the stated private operation, no public-body role is established either.
   A formal statutory accessibility declaration is not indicated by these facts;
   reassess for commercial/consumer services or institutional operation.
-- **Release:** public placeholders and review notices have been resolved or moved
-  to internal documentation. Resolve the remaining account-specific hosting item,
-  run `python scripts/check_release.py`, and obtain explicit owner approval. The
-  check still fails intentionally for that internal item. It is a local review aid, not an enforced
+- **Release:** public placeholders and internal hosting review have been resolved
+  for the current configuration, subject to the documented limitations.
+  Run `python scripts/check_release.py` and obtain explicit owner approval.
+  It is a local review aid, not an enforced
   GitHub gate. `noindex` is not access control. These drafts are not a legal guarantee.
 
 ## Latest follow-up: privacy text and export repair
@@ -103,46 +104,41 @@ Terms identify GitHub, Inc.; its general privacy notice also identifies GitHub B
 The notice describes the published hosting/transfers information without asserting
 an account-specific DPA or a particular controller/processor allocation.
 
-<!-- release-review-required: Personal account under standard GitHub terms confirmed. Clarify Pages visitor-data controller/processor roles and, if applicable, how an Article 28 agreement is concluded for this account. -->
+### Hosting assessment resolved provisionally ? BayLDA guidance
 
-This account-specific hosting question remains a publication blocker requiring
-review of the actual account agreements or clarification from GitHub. It has been
-moved out of the public notice, not marked resolved. The local release check also
-reads this internal marker. Remove it only after recording the review outcome.
+The owner confirmed a personal account under standard GitHub terms. The
+[BayLDA interpretation of 16 May 2019](https://www.lda.bayern.de/media/veroeffentlichungen/FAQ_Hosting_keine_Auftragsverarbeitung.pdf)
+addresses static presentation websites without user tracking or personal
+page-access data flowing to the operator. Necessary IP processing for the host's
+security alone is not commissioned processing under that guidance.
 
-### Hosting recheck before committing
+The current repository was rechecked: static pages and local interactive Plotly,
+no visitor backend/accounts, tracking, forms, third-party resource integrations
+or visitor-log collection. All five existing test groups pass; the earlier
+browser checks remain applicable because public code and assets are unchanged.
+No mechanism providing personal Pages access logs to the operator was identified.
+GitHub documents security IP logging; its reviewed Pages API documents site/build
+management rather than visitor-log retrieval. Repository traffic insights concern
+repository activity and are not evidence of a Pages access-log integration.
 
-The owner authorized the hosting review and committing/pushing this feature branch.
-The published GitHub Terms of Service expressly cover Pages; the privacy statement
-describes GitHub as controller for its own processing, and Pages documentation
-links its visitor-IP security logging to that statement. This supports describing
-GitHub's own security processing, but does not settle its role for all hosting
-operations. The published DPA forms part of a Customer Agreement and defines
-Online Services by reference to a written, executed agreement. Its availability
-alone does not establish incorporation into this account's contract.
+The conditions appear met on the available facts. A separate Article 28 AVV is
+provisionally not considered necessary for this basic static hosting configuration,
+subject to actual contractual and technical arrangements. This applies general
+regulatory guidance, not a GitHub-specific determination or compliance guarantee.
+The guidance dates from 2019 and refers to the then-applicable TKG; no claim is
+made that GitHub's retention is short-term or that every provider operation is
+covered. Authenticated account settings and provider-internal processing remain
+unverified, with no identified contrary arrangement. Reassess if log access,
+tracking, backend features or hosting arrangements change. The concise maintained
+assessment is in `GOVERNANCE.md`; the hosting release marker is removed. Contacting
+GitHub is not needed on the present evidence.
 
-Sources rechecked: [Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service),
-[privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement),
-[Pages data collection](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection),
-and [DPA](https://github.com/customer-terms/github-data-protection-agreement).
-The owner confirmed this is a personal account under the standard GitHub terms,
-not an employer/university account or a separate Enterprise/customer agreement.
-The applicable published standard terms have therefore been identified; no
-account-specific DPA was supplied or established by this review. This does not
-prove either that an Article 28 agreement is unnecessary or that one is absent.
-The reviewed documents do not settle the role allocation for all Pages visitor
-processing. To resolve that remaining question, ask GitHub through its
-[privacy support form](https://support.github.com/contact/privacy):
-For this account's custom-domain Pages hosting, which entity and terms apply,
-which visitor-data operations are performed as controller or processor, and,
-if processing on the operator's behalf occurs, how is an Article 28 agreement
-concluded? Record the answer before removing the review marker. No request has
-been sent to GitHub and no account settings were changed.
-
-The five tests pass with `.venv/Scripts/python.exe`, and footer regeneration is
-current. The system Python lacks Plotly; use the existing project environment.
-The release check remains blocked pending this evidence, independently of the
-owner's authorization to commit and push code for review.
+The public privacy notice was reviewed and remains unchanged: it identifies
+GitHub Pages, connection/IP data, security logging and official privacy sources,
+with retention uncertainty and without asserting a DPA or an automatic violation.
+This review adds no infrastructure, dependencies or public legal commentary.
+Current tests, footer freshness and release checks pass. No commit, push, merge,
+account-setting change or deployment was performed for this assessment.
 
 The Bundestag and SWIFT notebooks' export cells again call the shared writer and
 use `include_plotlyjs=False`. Their newer figure/layout source and saved notebook
@@ -158,8 +154,9 @@ unchanged. Regenerated pages retain local dependencies and legal navigation.
 All eight pages of the isolated regenerated site passed headless Chrome checks
 at 1280px and 390px, including rendering, keyboard focus and basic plot API
 interactions, with zero third-party requests, cookies or browser-storage accesses.
-The release check intentionally remains blocked by the account-specific GitHub
-review item above. No commit, push, merge or deployment occurred in this follow-up.
+That follow-up initially left the hosting review open; the BayLDA assessment
+below supersedes that blocker. The previously authorized follow-up commits were
+pushed only to the feature branch. No merge or production deployment occurred.
 
 ## Verification and limits
 
