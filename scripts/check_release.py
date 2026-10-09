@@ -1,4 +1,4 @@
-"""Fail closed while local legal drafts still contain review markers."""
+"""Check public draft markers and unresolved internal publication review items."""
 from pathlib import Path
 import re
 
@@ -10,4 +10,8 @@ for name in ('impressum.html', 'datenschutz.html'):
         drafts.append(name)
 if drafts:
     raise SystemExit('RELEASE BLOCKED: resolve personal/legal/hosting review items in ' + ', '.join(drafts))
-print('No draft markers remain. Owner review and explicit release approval are still required.')
+review = (root / 'GOVERNANCE_REVIEW.md').read_text(encoding='utf-8')
+pending = re.findall(r'<!-- release-review-required:\s*(.*?)\s*-->', review, re.S)
+if pending:
+    raise SystemExit('RELEASE BLOCKED: internal review pending: ' + '; '.join(pending))
+print('No draft or internal review markers remain. Owner review and explicit release approval are still required.')

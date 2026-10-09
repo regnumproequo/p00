@@ -7,13 +7,13 @@
 
 | Files | Change |
 | --- | --- |
-| `impressum.html`, `datenschutz.html` | German legal notices; Impressum simplified to supplied provider/contact details, privacy notice still contains draft placeholders and review notices. No liability boilerplate. |
+| `impressum.html`, `datenschutz.html` | German legal notices with supplied provider/contact details. Privacy notice includes the verified WEB.DE provider and confirmed email practice; visitor-facing placeholders and internal review notices removed. No liability boilerplate. |
 | `_includes/legal-footer.html`, `assets/governance.css` | Shared static legal navigation, dark styling, visible focus, reduced-motion support. |
 | `index.html` | Footer, privacy-friendly referrer policy, correct English document language. |
 | All five `notebooks/*.ipynb` and `output/*.html` | Local Plotly, persistent legal navigation; headings and keyboard scrolling where missing. Plot data/layout/configuration preserved. |
 | `assets/vendor/plotly-4.1.1.min.js`, `LICENSE-plotly.txt`, `README.md` | Existing Plotly version hosted locally, documented diagnostic-storage patch, license and checksums. |
 | `scripts/site_export.py` | Shared offline export/postprocessing, repeatable footer updates, version/patch drift checks. |
-| `scripts/check_release.py`, `tests/test_site.py` | Explicit draft check and four automated structural/privacy regression tests. |
+| `scripts/check_release.py`, `tests/test_site.py` | Explicit public/internal review check and five automated structural/privacy regression test groups. |
 | `GOVERNANCE.md`, `README.md`, `.gitignore`, `_config.yml` | Maintenance instructions; ignore local verification artifacts; exclude internal material from Jekyll output. No hosting-account or workflow changes. |
 
 ## Initial audit and privacy result
@@ -56,8 +56,13 @@ explicit review items in the privacy draft, not invented assurances.
 
 - **Identity:** provider name, street address and contact email have been supplied
   in both notices; retain them and confirm their accuracy before publication.
-  The privacy notice still contains draft markers. Confirm the email provider, recipients,
-  possible transfers and deletion practice. Nothing personal has been published.
+  The owner confirmed direct use of the WEB.DE mailbox without forwarding or
+  synchronization to another provider, and deletion once enquiries are no longer
+  needed. Provider details were checked against the
+  [WEB.DE Impressum](https://web.de/impressum/) and
+  [privacy notice](https://web.de/datenschutz/). WEB.DE describes German mailbox
+  storage but also allows international transfers in its general privacy terms;
+  the public notice reflects this without guaranteeing exclusively German processing.
 - **Impressum:** a public scientific site is not safely assumed to be exclusively
   personal/family use. The draft follows [§ 18(1) MStV](https://www.gesetze-bayern.de/Content/Document/MStV-18).
   [§ 5 DDG](https://www.gesetze-im-internet.de/ddg/__5.html) depends on the actual
@@ -83,10 +88,74 @@ explicit review items in the privacy draft, not invented assurances.
   On the stated private operation, no public-body role is established either.
   A formal statutory accessibility declaration is not indicated by these facts;
   reassess for commercial/consumer services or institutional operation.
-- **Release:** replace placeholders, resolve/remove review notices, run
-  `python scripts/check_release.py`, and obtain explicit owner approval. The
-  check currently fails intentionally. It is a local review aid, not an enforced
+- **Release:** public placeholders and review notices have been resolved or moved
+  to internal documentation. Resolve the remaining account-specific hosting item,
+  run `python scripts/check_release.py`, and obtain explicit owner approval. The
+  check still fails intentionally for that internal item. It is a local review aid, not an enforced
   GitHub gate. `noindex` is not access control. These drafts are not a legal guarantee.
+
+## Latest follow-up: privacy text and export repair
+
+Both legal pages now contain completed contact information without visitor-facing
+draft commentary. The privacy notice retains purpose-based deletion criteria;
+no fixed mailbox or Pages log-retention duration was invented. GitHub's published
+Terms identify GitHub, Inc.; its general privacy notice also identifies GitHub B.V.
+The notice describes the published hosting/transfers information without asserting
+an account-specific DPA or a particular controller/processor allocation.
+
+<!-- release-review-required: Confirm the GitHub agreement/roles and any Article 28 requirement applicable to this account; public documentation does not establish them. -->
+
+This account-specific hosting question remains a publication blocker requiring
+review of the actual account agreements or clarification from GitHub. It has been
+moved out of the public notice, not marked resolved. The local release check also
+reads this internal marker. Remove it only after recording the review outcome.
+
+### Hosting recheck before committing
+
+The owner authorized the hosting review and committing/pushing this feature branch.
+The published GitHub Terms of Service expressly cover Pages; the privacy statement
+describes GitHub as controller for its own processing, and Pages documentation
+links its visitor-IP security logging to that statement. This supports describing
+GitHub's own security processing, but does not settle its role for all hosting
+operations. The published DPA forms part of a Customer Agreement and defines
+Online Services by reference to a written, executed agreement. Its availability
+alone does not establish incorporation into this account's contract.
+
+Sources rechecked: [Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service),
+[privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement),
+[Pages data collection](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection),
+and [DPA](https://github.com/customer-terms/github-data-protection-agreement).
+First confirm whether this is a personal account under standard terms or an
+organization-provided account with a separate agreement. If those terms still
+leave Pages roles unclear, ask GitHub through its
+[privacy support form](https://support.github.com/contact/privacy):
+For this account's custom-domain Pages hosting, which entity and terms apply,
+which visitor-data operations are performed as controller or processor, and,
+if processing on the operator's behalf occurs, how is an Article 28 agreement
+concluded? Record the answer before removing the review marker. No request has
+been sent to GitHub and no account settings were changed.
+
+The five tests pass with `.venv/Scripts/python.exe`, and footer regeneration is
+current. The system Python lacks Plotly; use the existing project environment.
+The release check remains blocked pending this evidence, independently of the
+owner's authorization to commit and push code for review.
+
+The Bundestag and SWIFT notebooks' export cells again call the shared writer and
+use `include_plotlyjs=False`. Their newer figure/layout source and saved notebook
+outputs are preserved. Existing `output/*.html` files are unchanged; regenerating
+the Bundestag page will use the owner's newer sidebar layout, which differs from
+the existing draggable export. No older chart implementation was restored.
+
+Follow-up validation: five automated check groups passed, including the release
+check's handling of an unresolved internal item after public draft markers are
+removed. All five notebooks were executed before and after the repair in isolated
+copies; figure/layout JSON is identical and saved outputs/non-export source are
+unchanged. Regenerated pages retain local dependencies and legal navigation.
+All eight pages of the isolated regenerated site passed headless Chrome checks
+at 1280px and 390px, including rendering, keyboard focus and basic plot API
+interactions, with zero third-party requests, cookies or browser-storage accesses.
+The release check intentionally remains blocked by the account-specific GitHub
+review item above. No commit, push, merge or deployment occurred in this follow-up.
 
 ## Verification and limits
 

@@ -14,7 +14,9 @@ generates five Plotly pages in `output/`. No application server or visitor datab
   Existing source citations are links, not embeds. New maps/embeds can change this.
 - No consent banner for this implementation. Reassess § 25 TDDDG and GDPR before
   adding storage, analytics, APIs or third-party resources; prefer removing them.
-- Email correspondence needs accurate provider and deletion details in the notice.
+- Contact email uses WEB.DE directly, without forwarding or additional provider
+  sync. Delete enquiries once no longer needed, subject to applicable retention
+  duties; this practice was confirmed by the owner. Review changes to this setup.
   Publish aggregate/synthetic research data only after checking disclosure rights.
 
 ## Security and dependencies
@@ -39,8 +41,9 @@ existing pages. Run `python -m unittest discover -s tests` and
 
 Keep contact data accurate. Review both legal pages when content, email, hosting,
 monetization or dependencies change. Confirm legal links on every page, mobile
-layout and plot interactions. The current drafts **must not be published**: resolve
-all items in [GOVERNANCE_REVIEW.md](GOVERNANCE_REVIEW.md), then run
+layout and plot interactions. Legal-page placeholders have been completed, but
+the account-specific hosting review remains open. Resolve the publication items
+in [GOVERNANCE_REVIEW.md](GOVERNANCE_REVIEW.md), then run
 `python scripts/check_release.py`. This local check is not a GitHub deployment gate.
 Only after explicit owner approval may changes be committed, pushed or merged into
 `main`, which is the intended production Pages source. No deployment is part of this task.

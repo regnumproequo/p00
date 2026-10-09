@@ -5,6 +5,8 @@ from urllib.parse import urlsplit, unquote
 import json
 import re
 import sys
+import subprocess
+from uuid import uuid4
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -84,6 +86,38 @@ class WebsiteChecks(unittest.TestCase):
         config = (ROOT / '_config.yml').read_text()
         for name in ('GOVERNANCE.md', 'GOVERNANCE_REVIEW.md', 'scripts', 'tests'):
             self.assertIn('  - ' + name, config)
+
+    def test_release_check_blocks_unresolved_internal_review(self):
+        # Removing visitor-facing notices must not accidentally permit release
+        # while the account-specific hosting review is still pending.
+        review_root = ROOT / '.governance-review'
+        review_root.mkdir(exist_ok=True)
+        target = review_root / ('release-test-' + uuid4().hex)
+        target.mkdir()
+        try:
+            (target / 'scripts').mkdir()
+            (target / 'scripts/check_release.py').write_bytes((ROOT / 'scripts/check_release.py').read_bytes())
+            for name in ('impressum.html', 'datenschutz.html'):
+                (target / name).write_text('<html><body>Completed notice</body></html>', encoding='utf-8')
+            report = target / 'GOVERNANCE_REVIEW.md'
+            report.write_text('<!-- release-review-required: Account agreement unconfirmed -->', encoding='utf-8')
+            blocked = subprocess.run([sys.executable, str(target / 'scripts/check_release.py')], capture_output=True, text=True)
+            self.assertNotEqual(blocked.returncode, 0)
+            self.assertIn('Account agreement unconfirmed', blocked.stderr)
+            report.write_text('Account agreement reviewed; no open markers.', encoding='utf-8')
+            completed = subprocess.run([sys.executable, str(target / 'scripts/check_release.py')], capture_output=True, text=True)
+            self.assertEqual(completed.returncode, 0)
+            self.assertIn('explicit release approval', completed.stdout)
+            (target / 'datenschutz.html').write_text('<p data-review-required>Unresolved</p>', encoding='utf-8')
+            draft = subprocess.run([sys.executable, str(target / 'scripts/check_release.py')], capture_output=True, text=True)
+            self.assertNotEqual(draft.returncode, 0)
+            self.assertIn('datenschutz.html', draft.stderr)
+        finally:
+            # Only these known fixture files are removed; no recursive deletion.
+            for name in ('impressum.html', 'datenschutz.html', 'GOVERNANCE_REVIEW.md', 'scripts/check_release.py'):
+                (target / name).unlink(missing_ok=True)
+            (target / 'scripts').rmdir()
+            target.rmdir()
 
 
 if __name__ == '__main__':
