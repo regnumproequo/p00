@@ -37,11 +37,11 @@ function positionedAnnotations() {
             item.borderpad = 2;
             item.text = item.text.replace('Other parties', 'Others');
         } else if (name.startsWith('year-')) {
-            item.xanchor = name.endsWith('2021') ? 'left' : 'right';
+            item.xanchor = 'center';
             item.text = name.endsWith('2021') ? '<b>2021</b>' : '<b>2025</b>';
             item.y = 1.053;
         } else if (name.startsWith('basis-')) {
-            item.xanchor = name.endsWith('2021') ? 'left' : 'right';
+            item.xanchor = 'center';
             item.text = 'Second votes · 100%';
             item.font = {...item.font, size: 10};
             item.y = 1.027;
@@ -224,10 +224,15 @@ function syncHandles() {
 }
 
 chart.on('plotly_afterplot', syncHandles);
-resetButton.addEventListener('click', () => {
+resetButton.addEventListener('click', async () => {
     for (const node of nodes.values()) { node.dx = 0; node.dy = 0; }
     selection.hidden = true;
-    scheduleDraw();
+    await renderPositions();
+    await Plotly.relayout(chart, {
+        'xaxis.range': compactLayout ? [-0.025, 1.025] : [-0.29, 1.29],
+        'yaxis.range': [154, -1]
+    });
+    chart.parentElement.scrollLeft = 0;
 });
 
 adaptChart();

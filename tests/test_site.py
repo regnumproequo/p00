@@ -87,6 +87,35 @@ class WebsiteChecks(unittest.TestCase):
         for name in ('GOVERNANCE.md', 'GOVERNANCE_REVIEW.md', 'scripts', 'tests'):
             self.assertIn('  - ' + name, config)
 
+    def test_bundestag_export_keeps_reset_controls(self):
+        html = (ROOT / 'output/20261008_bundestagswahl_sankey.html').read_text(encoding='utf-8')
+        self.assertIn(('button', {'id': 'reset-layout', 'type': 'button'}), Page(html).tags)
+        self.assertIn('Reset view</button>', html)
+        script = (ROOT / 'assets/bundestag_sankey.js').read_text(encoding='utf-8').strip()
+        plot_call = html.index('Plotly.newPlot(') + len('Plotly.newPlot(')
+        decoder = json.JSONDecoder()
+        args = []
+        cursor = plot_call
+        for _ in range(3):
+            while html[cursor].isspace() or html[cursor] == ',':
+                cursor += 1
+            value, cursor = decoder.raw_decode(html, cursor)
+            args.append(value)
+        plot_id, traces, layout = args
+        self.assertIn(script.replace('{plot_id}', plot_id), html)
+        node_ids = {t['meta']['node_id'] for t in traces if t['meta']['kind'] == 'node'}
+        self.assertEqual(len(node_ids), 17)
+        for trace in traces:
+            if trace['meta']['kind'] == 'flow':
+                self.assertIn(trace['meta']['source'], node_ids)
+                self.assertIn(trace['meta']['target'], node_ids)
+        annotation_names = {a.get('name') for a in layout['annotations']}
+        self.assertTrue({f'node-{node_id}' for node_id in node_ids} <= annotation_names)
+        notebook = json.loads((ROOT / 'notebooks/20261008_bundestagswahl_sankey.ipynb').read_text(encoding='utf-8'))
+        source = '\n'.join(''.join(c['source']) for c in notebook['cells'] if c['cell_type'] == 'code')
+        self.assertIn('post_script=interaction_script.strip()', source)
+        self.assertIn('id="reset-layout"', source)
+
     def test_release_check_blocks_unresolved_internal_review(self):
         # Removing visitor-facing notices must not accidentally permit release
         # while the account-specific hosting review is still pending.
