@@ -7,7 +7,7 @@
 
 | Files | Change |
 | --- | --- |
-| `impressum.html`, `datenschutz.html` | German drafts, visible placeholders and review notices; no liability boilerplate. |
+| `impressum.html`, `datenschutz.html` | German legal notices; Impressum simplified to supplied provider/contact details, privacy notice still contains draft placeholders and review notices. No liability boilerplate. |
 | `_includes/legal-footer.html`, `assets/governance.css` | Shared static legal navigation, dark styling, visible focus, reduced-motion support. |
 | `index.html` | Footer, privacy-friendly referrer policy, correct English document language. |
 | All five `notebooks/*.ipynb` and `output/*.html` | Local Plotly, persistent legal navigation; headings and keyboard scrolling where missing. Plot data/layout/configuration preserved. |
@@ -54,8 +54,9 @@ explicit review items in the privacy draft, not invented assurances.
 
 ## Legal assessment and publication blockers
 
-- **Identity:** supply and approve full legal name, a serviceable street address
-  and contact email in both notices. Confirm the email provider, recipients,
+- **Identity:** provider name, street address and contact email have been supplied
+  in both notices; retain them and confirm their accuracy before publication.
+  The privacy notice still contains draft markers. Confirm the email provider, recipients,
   possible transfers and deletion practice. Nothing personal has been published.
 - **Impressum:** a public scientific site is not safely assumed to be exclusively
   personal/family use. The draft follows [§ 18(1) MStV](https://www.gesetze-bayern.de/Content/Document/MStV-18).
@@ -63,10 +64,14 @@ explicit review items in the privacy draft, not invented assurances.
   business/economic context; non-commercial labeling alone is not decisive.
   If applicable, check whether the contact channel meets the rapid/direct
   communication requirement and whether any further provider details apply.
-- **Editorial judgment:** assess the election analysis and future visual essays
-  under § 18(2) MStV. If applicable, identify an eligible responsible person with
-  name/address and content scope; § 18(4) also refers to § 5 DDG. Otherwise remove
-  the conditional placeholder. No automatic journalistic classification was made.
+- **Editorial assumption:** at the owner's instruction, the current personal
+  academic projects and data visualizations are provisionally treated as not
+  journalistic-editorial under § 18(2) MStV. The current election page presents
+  a visualization with methodological notes and source citations; the visible
+  content review found no clear contradiction to that assumption. The Impressum's
+  legal assessments, review notices and editorial-responsibility placeholder
+  have been removed. Reassess if actual content or editorial activity changes;
+  flag a contradiction for review before omitting required provider information.
 - **Privacy:** the draft covers controller, hosting/access data, purposes,
   Article 6(1)(f) interests, recipients/transfers, retention uncertainty, email,
   browser technologies, rights/objection and complaints. Resolve the hosting
