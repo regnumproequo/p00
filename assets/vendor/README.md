@@ -14,7 +14,7 @@ Privacy patch: replace exactly three `window.localStorage` references with `({})
 and prepend an explanatory comment. These references belong to optional debug
 and deprecation preferences. Diagnostics use in-memory objects; persistent
 preferences are no longer consulted or written. Plot code is otherwise unchanged.
-`scripts/site_export.py` applies this reproducibly and fails on version/count drift.
+`site_export.py` applies this reproducibly and fails on version/count drift.
 
 The full bundle supports the existing 3D surface and Sankeys. It also contains
 unused map/API URLs: new map/geo traces require a fresh network/privacy review.
