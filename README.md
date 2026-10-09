@@ -14,5 +14,6 @@ Preview from the repository root with
 `python -m http.server 8000 --bind 127.0.0.1` so absolute links and assets resolve.
 See [GOVERNANCE.md](GOVERNANCE.md) for privacy, security and maintenance guidance.
 
-Develop on feature branches. Review before merging into `main`, which publishes
-the production website through GitHub Pages.
+Work directly on `main`; keep `main` as the only local and remote branch.
+Review and validate changes before pushing, which publishes the production
+website through GitHub Pages.

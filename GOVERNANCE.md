@@ -56,8 +56,8 @@ email enquiries remain a separate processing activity.
 
 ## Maintenance and release
 
-Develop on feature branches and review changes before merging into `main`, the
-production GitHub Pages branch. Pushing `main` can deploy the website.
+Work directly on `main`; keep `main` as the only local and remote branch.
+Review and validate changes before pushing `main`, which can deploy the website.
 
 Notebook export cells call `site_export.py`. Change the shared footer in
 `_includes/legal-footer.html` and run `python site_export.py` to refresh existing
