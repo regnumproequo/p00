@@ -3,6 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, unquote
 import json
+import ast
 import re
 import sys
 import subprocess
@@ -91,7 +92,19 @@ class WebsiteChecks(unittest.TestCase):
         html = (ROOT / 'output/20261008_bundestagswahl_sankey.html').read_text(encoding='utf-8')
         self.assertIn(('button', {'id': 'reset-layout', 'type': 'button'}), Page(html).tags)
         self.assertIn('Reset view</button>', html)
-        script = (ROOT / 'assets/bundestag_sankey.js').read_text(encoding='utf-8').strip()
+        notebook = json.loads((ROOT / 'notebooks/20261008_bundestagswahl_sankey.ipynb').read_text(encoding='utf-8'))
+        interaction_source = next(''.join(c['source']) for c in notebook['cells']
+                                  if c['cell_type'] == 'code' and 'ribbon_hover_settings = ' in ''.join(c['source']))
+        statements = ast.parse(interaction_source).body
+        settings = next(ast.literal_eval(statement.value) for statement in statements
+                        if isinstance(statement, ast.Assign)
+                        and any(isinstance(t, ast.Name) and t.id == 'ribbon_hover_settings'
+                                for t in statement.targets))
+        script = next(ast.literal_eval(statement.value.func.value) for statement in statements
+                      if isinstance(statement, ast.Assign)
+                      and any(isinstance(t, ast.Name) and t.id == 'interaction_script'
+                              for t in statement.targets))
+        script = script.replace('{ribbon_hover_settings}', json.dumps(settings)).strip()
         plot_call = html.index('Plotly.newPlot(') + len('Plotly.newPlot(')
         decoder = json.JSONDecoder()
         args = []
@@ -115,6 +128,8 @@ class WebsiteChecks(unittest.TestCase):
         source = '\n'.join(''.join(c['source']) for c in notebook['cells'] if c['cell_type'] == 'code')
         self.assertIn('post_script=interaction_script.strip()', source)
         self.assertIn('id="reset-layout"', source)
+        self.assertNotIn('bundestag_sankey.js', source)
+        self.assertIn('escape(preview_document, quote=True)', source)
 
     def test_release_check_blocks_unresolved_internal_review(self):
         # Removing visitor-facing notices must not accidentally permit release
