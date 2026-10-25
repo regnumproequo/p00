@@ -15,3 +15,6 @@ __pycache__/
 
 # Local governance verification artifacts
 .governance-review/
+
+# Downloaded full-size elevation tiles; the small source crop is in data/.
+.cache/
