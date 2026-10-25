@@ -3,40 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>phey.app</title>
-  <link rel="stylesheet" href="style.css">
+  <title>phey.app — A world of patterns</title>
+  <meta name="description" content="Explore data, science, and the connections between them. Interactive visualizations, flow maps, and mathematical experiments by phey.app.">
+  <meta name="theme-color" content="#1c2338">
+  <link rel="icon" href="assets/landing/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/landing.css">
   <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="/assets/governance.css">
+  <script src="assets/landing.js" defer></script>
 </head>
 <body>
-  <main class="hero">
-    <p class="eyebrow">phey.app</p>
-
-    <h1>Python-powered data visualization.</h1>
-
-    <p class="subtitle">
-      Interactive charts, flow maps and visual tools built with Python and Plotly.
-    </p>
-
-    <div class="actions">
-      <a href="output/20261003_plot.html" class="button">Open Interactive Line Plot</a>
-      <a href="output/20261017_tesseract.html" class="button">Open Tesseract</a>
-      <a href="output/20261018_gravity.html" class="button">Open Gravity</a>
-      <a href="output/20261008_bundestagswahl_sankey.html" class="button">Open Bundestag Sankey</a>
-      <a href="output/20261004_parabola_3d.html" class="button">Open 3D parabola</a>
-
-
-      <a href="#about" class="button secondary">Explore the idea</a>
-    </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="phey.app home">
+      <svg class="brand-mark" viewBox="0 0 40 44" fill="none" aria-hidden="true"><path d="M20 2 37 12v20L20 42 3 32V12Z M20 2v20m17-10L20 22 3 12m17 10v20M3 32l17-10 17 10" stroke="currentColor" stroke-width="1.4"/></svg>
+      <span class="brand-name">phey.app<span class="brand-subtitle">Ideas into perspective</span></span>
+    </a>
+    <span class="header-note">An independent space for science and exploration</span>
+    <button class="menu-button" id="menu-toggle" type="button" aria-controls="site-menu" aria-expanded="false" aria-haspopup="dialog" hidden><span class="burger" aria-hidden="true"></span>Menu</button>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="globe" aria-hidden="true">
+        <img class="globe-poster" src="assets/landing/earth-poster.jpg" width="1000" height="1000" alt="" fetchpriority="high">
+        <canvas id="globe-canvas" width="1000" height="1000"></canvas>
+      </div>
+      <div class="hero-content">
+        <h1 id="hero-title">A world of patterns.</h1>
+        <p class="subtitle">Exploring the connections between data, science, and the world around us. One visualization at a time.</p>
+        <a class="arrow-link" href="#about"><span class="arrow" aria-hidden="true">&#8594;</span><span class="link-label">Discover phey.app</span></a>
+      </div>
+      <button class="motion-button" id="motion-toggle" type="button" aria-label="Pause background animation" hidden><span aria-hidden="true">&#10074;&#10074;</span></button>
+    </section>
+    <noscript><nav class="no-script-nav" aria-label="Page navigation"><a href="#about">About phey.app</a><a href="#projects">Explore the projects</a></nav></noscript>
+    <section class="intro container" id="about" aria-labelledby="about-title">
+      <div class="intro-grid">
+        <div>
+          <h2 id="about-title">Curiosity, made visible.</h2>
+          <figure>
+            <img src="assets/landing/river-delta.jpg" alt="The branching waterways and islands of the Rhine–Meuse–Scheldt delta, photographed from space" width="1041" height="694" loading="lazy" decoding="async">
+            <figcaption>Connections, seen from a different perspective. The Rhine–Meuse–Scheldt delta. <a href="https://www.nasa.gov/image-article/rhine-meuse-scheldt-river-delta-netherlands/">Image: NASA.</a></figcaption>
+          </figure>
+          <p class="intro-summary">phey.app is a personal space for exploring ideas through data. From the paths of rivers to the geometry of gravity, these projects make complex relationships visible and invite you to look closer.</p>
+        </div>
+        <dl class="facts">
+          <div class="fact"><dt>6 interactive explorations</dt><dd>Discover <a href="#projects">a growing collection</a> of charts, flow maps, and visual experiments across science, mathematics, and society.</dd></div>
+          <div class="fact"><dt>From 2 to 4 dimensions</dt><dd>Move from a simple line to a <a href="#tesseract">four-dimensional tesseract</a>. Change your perspective and see familiar ideas in a new way.</dd></div>
+          <div class="fact"><dt>Python at the source</dt><dd>Every project begins in a Jupyter notebook. Explore the <a href="https://github.com/regnumproequo/p00/tree/main/notebooks">code and thinking behind the visualizations</a>.</dd></div>
+        </dl>
+      </div>
+    </section>
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="projects-heading"><div><p class="eyebrow">Explore the collection</p><h2 id="projects-title">Follow your curiosity.</h2></div><p>Different questions. New perspectives.<br>Each project is an invitation to explore.</p></div>
+      <article class="project" id="elections">
+        <a class="project-image" href="output/20261008_bundestagswahl_sankey.html" aria-label="Open Bundestag Sankey">
+          <img src="assets/landing/elections.jpg" alt="Preview of the Bundestag Sankey visualization" width="1200" height="828" loading="lazy" decoding="async">
+        </a>
+        <div class="project-copy">
+          <p class="eyebrow">01 / Society</p>
+          <h3>A changing electorate.</h3>
+          <p class="project-description">Explore voter flows in Germany’s federal election through a Sankey diagram. Follow the connections to see the detail behind the totals.</p>
+          <a class="arrow-link" href="output/20261008_bundestagswahl_sankey.html"><span class="arrow" aria-hidden="true">&#8594;</span><span class="link-label">Explore Bundestag Sankey</span></a>
+        </div>
+      </article>
+      <article class="project" id="tesseract">
+        <a class="project-image" href="output/20261017_tesseract.html" aria-label="Open Tesseract">
+          <img src="assets/landing/tesseract.jpg" alt="Preview of the Tesseract visualization" width="1200" height="828" loading="lazy" decoding="async">
+        </a>
+        <div class="project-copy">
+          <p class="eyebrow">02 / Geometry</p>
+          <h3>Beyond three dimensions.</h3>
+          <p class="project-description">Meet the tesseract: a four-dimensional cube seen through a three-dimensional projection. Rotate it to discover how its edges connect.</p>
+          <a class="arrow-link" href="output/20261017_tesseract.html"><span class="arrow" aria-hidden="true">&#8594;</span><span class="link-label">Explore Tesseract</span></a>
+        </div>
+      </article>
+      <article class="project" id="gravity">
+        <a class="project-image" href="output/20261018_gravity.html" aria-label="Open Gravity">
+          <img src="assets/landing/gravity.jpg" alt="Preview of the Gravity visualization" width="1200" height="828" loading="lazy" decoding="async">
+        </a>
+        <div class="project-copy">
+          <p class="eyebrow">03 / Physics</p>
+          <h3>The shape of gravity.</h3>
+          <p class="project-description">Explore a moving model of the Sun, Earth, and Moon, and the geometry of a gravitational well. Change the view and investigate the motion.</p>
+          <a class="arrow-link" href="output/20261018_gravity.html"><span class="arrow" aria-hidden="true">&#8594;</span><span class="link-label">Explore Gravity</span></a>
+        </div>
+      </article>
+      <article class="project" id="parabola">
+        <a class="project-image" href="output/20261004_parabola_3d.html" aria-label="Open 3D parabola">
+          <img src="assets/landing/parabola.jpg" alt="Preview of the 3D parabola visualization" width="1200" height="828" loading="lazy" decoding="async">
+        </a>
+        <div class="project-copy">
+          <p class="eyebrow">04 / Mathematics</p>
+          <h3>A new perspective on a curve.</h3>
+          <p class="project-description">Step into a three-dimensional view of a parabola. Turn the figure, examine its shape, and look at a familiar mathematical idea from another angle.</p>
+          <a class="arrow-link" href="output/20261004_parabola_3d.html"><span class="arrow" aria-hidden="true">&#8594;</span><span class="link-label">Explore 3D parabola</span></a>
+        </div>
+      </article>
+      <article class="project" id="rivers">
+        <a class="project-image" href="output/20261023_german_rivers_sankey.html" aria-label="Open German Rivers">
+          <img src="assets/landing/rivers.jpg" alt="Preview of the German Rivers visualization" width="1200" height="828" loading="lazy" decoding="async">
+        </a>
+        <div class="project-copy">
+          <p class="eyebrow">05 / Geography</p>
+          <h3>Where rivers meet.</h3>
+          <p class="project-description">Follow Germany’s rivers through a network of tributaries, confluences, and drainage basins. A different way to see how a landscape connects.</p>
+          <a class="arrow-link" href="output/20261023_german_rivers_sankey.html"><span class="arrow" aria-hidden="true">&#8594;</span><span class="link-label">Explore German Rivers</span></a>
+        </div>
+      </article>
+      <article class="project" id="line-plot">
+        <a class="project-image" href="output/20261003_plot.html" aria-label="Open Interactive Line Plot">
+          <img src="assets/landing/line-plot.jpg" alt="Preview of the Interactive Line Plot visualization" width="1200" height="828" loading="lazy" decoding="async">
+        </a>
+        <div class="project-copy">
+          <p class="eyebrow">06 / Data exploration</p>
+          <h3>Start with a line.</h3>
+          <p class="project-description">An interactive line plot and a simple invitation to explore: zoom in, inspect individual points, and find the patterns in the data.</p>
+          <a class="arrow-link" href="output/20261003_plot.html"><span class="arrow" aria-hidden="true">&#8594;</span><span class="link-label">Explore Interactive Line Plot</span></a>
+        </div>
+      </article>
+      </div>
+    </section>
+    <section class="closing" aria-labelledby="closing-title">
+      <h2 id="closing-title">There’s more beneath the surface.</h2>
+      <p>Explore the notebooks, follow the methods, and see how each visualization takes shape.</p>
+      <a class="arrow-link" href="https://github.com/regnumproequo/p00"><span class="arrow" aria-hidden="true">&#8594;</span><span class="link-label">Explore the source on GitHub</span></a>
+    </section>
+    <p class="image-credit">Earth imagery: <a href="https://svs.gsfc.nasa.gov/2915">NASA/Goddard Space Flight Center Scientific Visualization Studio</a>. Blue Marble data courtesy of Reto Stöckli (NASA/GSFC).</p>
   </main>
-
-  <section id="about" class="section">
-    <h2>What this will become</h2>
-    <p>
-      phey.app is an experimental space for interactive data projects:
-      visual essays, adjustable plots, flow charts and small public web apps.
-    </p>
-  </section>
+  <dialog class="menu-dialog" id="site-menu" aria-labelledby="menu-title">
+    <div class="menu-top"><span class="brand-name" id="menu-title">Explore phey.app</span><button class="close-menu" id="menu-close" type="button" autofocus>Close <span aria-hidden="true">&#215;</span></button></div>
+    <nav class="menu-links" aria-label="Main navigation">
+      <a href="#about">About phey.app</a>
+      <a href="#projects">All projects</a>
+      <p class="menu-section">The collection</p>
+      <a href="#elections">Bundestag Sankey</a>
+      <a href="#tesseract">Tesseract</a>
+      <a href="#gravity">Gravity</a>
+      <a href="#parabola">3D parabola</a>
+      <a href="#rivers">German Rivers</a>
+      <a href="#line-plot">Interactive Line Plot</a>
+      <a class="menu-section" href="https://github.com/regnumproequo/p00">Source on GitHub &#8599;</a>
+    </nav>
+  </dialog>
 <!-- legal-footer:start -->
 <footer class="site-footer" lang="de">
   <nav aria-label="Rechtliche Informationen">
