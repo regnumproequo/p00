@@ -42,6 +42,20 @@ guidance, not BayLDA approval of GitHub or a compliance guarantee. Reassess if
 tracking, visitor-log access, server-side features or hosting arrangements change;
 email enquiries remain a separate processing activity.
 
+## Urheberrechtlicher Hinweis zum Logo
+
+Dokumentierte rechtliche Einschätzung des Betreibers zum aktuell verwendeten Logo:
+
+Das auf phey.app verwendete Logo besteht aus einfachen geometrischen Grundformen und deren symmetrischer Anordnung.
+
+Gemäß § 2 Abs. 2 Urheberrechtsgesetz (UrhG) setzt der urheberrechtliche Schutz eine persönliche geistige Schöpfung voraus. Nach unserer rechtlichen Einschätzung erreicht die Gestaltung des verwendeten Symbols aufgrund ihrer elementaren geometrischen Struktur nicht die hierfür erforderliche Schöpfungshöhe.
+
+Das Symbol wird daher als urheberrechtlich nicht geschützte geometrische Darstellung eingeordnet.
+
+Etwaige Marken-, Design- oder sonstige Kennzeichenrechte bleiben von dieser urheberrechtlichen Einordnung unberührt.
+
+**Rechtsgrundlage:** [§ 2 Abs. 2 UrhG](https://www.gesetze-im-internet.de/urhg/__2.html)
+
 ## Security and dependencies
 
 - Never store credentials in HTML, notebooks, outputs or Git. Keep secrets outside
