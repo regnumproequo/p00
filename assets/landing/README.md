@@ -33,6 +33,7 @@ original interactive export.
 | `gravity.jpg` | `20261018_gravity.html` |
 | `tesseract.jpg` | `20261017_tesseract.html` |
 | `elections.jpg` | `20261008_bundestagswahl_sankey.html` |
+| `manam.jpg` | `20261027_typology_3d.html` |
 | `matterhorn.jpg` | `20261004_parabola_3d.html` (now Matterhorn terrain; historic URL retained) |
 | `line-plot.jpg` | `20261003_plot.html` |
 
