@@ -1,5 +1,19 @@
 /* Shared by the landing page, legal notices and notebook exports. */
 :focus-visible { outline: 3px solid #8ecae6; outline-offset: 4px; }
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 1rem 2rem 0;
+  color: #c7d0dd;
+  font: 1.15rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-decoration: none;
+}
+.site-brand svg { width: 28px; height: 31px; color: #a9bbd2; flex: none; }
+.site-brand-copy { display: grid; gap: 0.35rem; }
+.site-brand-name { letter-spacing: -0.045em; }
+.site-brand-tagline { font-size: 0.48rem; letter-spacing: 0.19em; text-transform: uppercase; }
+.site-brand:hover { color: #fff; }
 .site-footer {
   box-sizing: border-box;
   padding: 1.25rem 1rem;

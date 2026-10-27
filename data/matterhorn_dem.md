@@ -7,7 +7,7 @@ The historic filename now produces the Matterhorn topography.
 Source: [Copernicus DEM GLO-30 on AWS](https://registry.opendata.aws/copernicus-dem/),
 2021 release, accessed 25 October 2026. The archive contains:
 
-- `elevation_m`: 261 × 375 float32 surface elevations, metres relative to EGM2008.
+- `elevation_m`: 164 ? 235 float32 surface elevations, metres relative to EGM2008.
 - `latitude`: WGS84 pixel-centre latitudes, north to south.
 - `longitude`: WGS84 pixel-centre longitudes, west to east.
 - `provenance`: JSON with dataset identity, source URLs, access date, attribution,
@@ -19,6 +19,9 @@ checks the join, and crops them without resampling. Its later plotting step
 bilinearly resamples the crop. Set `REFRESH_DATA = True` in that notebook to
 rebuild the archive. Full downloads are cached in ignored `.cache/terrain/`.
 Normal runs use the archive offline.
+
+The bundled crop and displayed map now cover 5 ? 5 km around the summit.
+The notebook bilinearly samples the crop to a 281 ? 281 display grid.
 
 This is a digital surface model, not a survey of the summit. The displayed grid
 peaks at roughly 4,330 m; the separate 4,478 m marker is a reference elevation.

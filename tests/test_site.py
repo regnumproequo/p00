@@ -37,6 +37,16 @@ class WebsiteChecks(unittest.TestCase):
                 self.assertTrue(any(tag == 'html' and a.get('lang') in ('en', 'de') for tag, a in page.tags))
                 self.assertTrue(any(tag == 'title' for tag, _ in page.tags))
                 self.assertEqual(text.count('class="site-footer"'), 1)
+                favicons = [attrs for tag, attrs in page.tags if tag == 'link' and attrs.get('rel') == 'icon']
+                self.assertEqual(len(favicons), 1)
+                favicon_href = favicons[0].get('href')
+                self.assertIn(favicon_href, ('assets/landing/mark.svg', '/assets/landing/mark.svg'))
+                if path.name != 'index.html':
+                    self.assertEqual(favicon_href, '/assets/landing/mark.svg')
+                brand_count = text.count('class="site-brand"')
+                self.assertEqual(brand_count, 0 if path.name == 'index.html' else 1)
+                if path.name != 'index.html':
+                    self.assertIn('Ideas into perspective', text)
                 self.assertEqual(text, prepare_page(text, plot=path.parent.name == 'output'))
                 for target in ('/impressum.html', '/datenschutz.html'):
                     self.assertIn(('a', {'href': target}), page.tags)
