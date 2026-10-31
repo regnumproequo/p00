@@ -13,7 +13,14 @@ or browser storage are required by the landing page.
   from the same source. This is the fallback when JavaScript or WebGL is unavailable.
 - Blue Marble data credit: Reto Stöckli (NASA/GSFC), NASA's Earth Observatory.
   The decorative globe uses historical imagery, not live observations.
-- `river-delta.jpg`: NASA astronaut photography, ISS063-E-002730, April 23, 2020.
+- `angkor-ruins.jpg`: Angkor, Cambodia, acquired by Terra/ASTER on February 17, 2004.
+  Image by Jesse Allen, NASA Earth Observatory; data courtesy of
+  NASA/GSFC/METI/ERSDAC/JAROS and the U.S./Japan ASTER Science Team.
+  [Source and caption](https://science.nasa.gov/earth/earth-observatory/angkor-ruins-4995/).
+  [NASA image](https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/imagerecords/4000/4995/aster_angorwat_17feb04_15m.jpg).
+  Stored locally as the NASA-served 1280 × 1280 JPEG; the teaser uses the existing
+  centered landscape crop in CSS.
+- `river-delta.jpg` (previous teaser): NASA astronaut photography, ISS063-E-002730, April 23, 2020.
   [Source and caption](https://www.nasa.gov/image-article/rhine-meuse-scheldt-river-delta-netherlands/).
   [Original photo](https://www.nasa.gov/wp-content/uploads/2023/03/iss063e002730.jpg).
   Re-encoded as JPEG at its original 1041 × 694 dimensions.
@@ -36,6 +43,8 @@ original interactive export.
 | `manam.jpg` | `20261027_typology_3d.html` |
 | `matterhorn.jpg` | `20261004_parabola_3d.html` (now Matterhorn terrain; historic URL retained) |
 | `line-plot.jpg` | `20261003_plot.html` |
+| `angkor-water.jpg` | `20261031_angkor_water_system.html` |
+| `angkor-hydraulic-city.jpg` | `20261031_angkor_hydraulic_city.html` |
 
 To refresh a preview, first run its source notebook, serve the repository root
 locally, open the export, and capture the returned data URL from:

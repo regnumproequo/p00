@@ -74,7 +74,9 @@
   }
   // A static local poster remains visible when WebGL or JavaScript is unavailable.
   try {
-    const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: false, antialias: false, powerPreference: 'low-power' });
+    // Supply premultiplied colors directly so the atmosphere does not depend
+    // on the browser converting transparent pixels during compositing.
+    const gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, powerPreference: 'low-power' });
     if (!gl) return;
     const vertexSource = `
       attribute vec2 position;
@@ -91,7 +93,7 @@
         float r2 = dot(p, p);
         if (r2 > 1.0) {
           float halo = 0.32 * exp(-(sqrt(r2) - 1.0) * 90.0);
-          gl_FragColor = vec4(0.39, 0.58, 0.87, halo);
+          gl_FragColor = vec4(vec3(0.39, 0.58, 0.87) * halo, halo);
           return;
         }
         vec3 normal = vec3(p, sqrt(1.0 - r2));
@@ -102,7 +104,8 @@
         float light = 0.28 + 0.72 * max(0.0, dot(normal, normalize(vec3(-0.45, 0.65, 1.5))));
         float rim = pow(1.0 - normal.z, 3.0);
         color = color * light + vec3(0.13, 0.26, 0.48) * rim * 0.6;
-        gl_FragColor = vec4(color, 1.0 - smoothstep(0.997, 1.0, r2));
+        float alpha = 1.0 - smoothstep(0.997, 1.0, r2);
+        gl_FragColor = vec4(color * alpha, alpha);
       }
     `;
     function shader(type, source) {

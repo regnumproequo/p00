@@ -41,6 +41,8 @@ def vendor_plotly():
 
 
 def prepare_page(document, *, plot=False):
+    # Notebook-native SVG pages use the same chrome without loading Plotly.
+    plot = plot and '<meta name="visualization-engine" content="svg">' not in document
     if not re.search(r'<link\b[^>]*\brel=["\'](?:shortcut )?icon["\']', document, re.I):
         document = document.replace('</head>', f'  {FAVICON}\n</head>', 1)
     if not re.search(r'<header\b[^>]*class="[^"]*\bsite-header\b', document):
@@ -73,6 +75,13 @@ def prepare_page(document, *, plot=False):
 def write_plot_page(path, document):
     vendor_plotly()
     Path(path).write_text(prepare_page(document, plot=True), encoding='utf-8', newline='\n')
+
+
+def write_svg_page(path, document):
+    """Export a notebook-owned SVG visualization with shared site navigation."""
+    if '<meta name="visualization-engine" content="svg">' not in document:
+        raise ValueError('SVG exports must declare their visualization engine.')
+    Path(path).write_text(prepare_page(document), encoding='utf-8', newline='\n')
 
 
 def main():

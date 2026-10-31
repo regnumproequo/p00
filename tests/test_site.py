@@ -28,7 +28,7 @@ class Page(HTMLParser):
 class WebsiteChecks(unittest.TestCase):
     def test_public_pages_and_references(self):
         pages = [*ROOT.glob('*.html'), *ROOT.glob('output/*.html')]
-        self.assertEqual(len(pages), 13)
+        self.assertEqual(len(pages), 16)
         for path in pages:
             with self.subTest(page=path.name):
                 text = path.read_text(encoding='utf-8')
@@ -72,9 +72,10 @@ class WebsiteChecks(unittest.TestCase):
     def test_plot_dependencies_and_storage(self):
         for path in (ROOT / 'output').glob('*.html'):
             text = path.read_text(encoding='utf-8')
-            self.assertEqual(text.count(f'src="{PLOTLY_URL}"'), 1)
+            is_svg = '<meta name="visualization-engine" content="svg">' in text
+            self.assertEqual(text.count(f'src="{PLOTLY_URL}"'), 0 if is_svg else 1)
             self.assertNotIn('https://cdn.plot.ly/', text)
-            self.assertIn('Plotly.newPlot(', text)
+            self.assertIn('<svg' if is_svg else 'Plotly.newPlot(', text)
             self.assertNotRegex(text, r'localStorage|sessionStorage|document\.cookie|sendBeacon')
         vendor = (ROOT / PLOTLY_URL.lstrip('/')).read_text(encoding='utf-8')
         self.assertNotIn('window.localStorage', vendor)
@@ -87,8 +88,11 @@ class WebsiteChecks(unittest.TestCase):
         for path in (ROOT / 'notebooks').glob('*.ipynb'):
             notebook = json.loads(path.read_text(encoding='utf-8'))
             sources = '\n'.join(''.join(cell['source']) for cell in notebook['cells'] if cell['cell_type'] == 'code')
-            self.assertIn('write_plot_page(output_file,', sources)
-            self.assertIn('include_plotlyjs=False', sources)
+            if 'write_svg_page(output_file,' in sources:
+                self.assertIn('visualization-engine', sources)
+            else:
+                self.assertIn('write_plot_page(output_file,', sources)
+                self.assertIn('include_plotlyjs=False', sources)
             self.assertNotIn('include_plotlyjs="cdn"', sources)
             self.assertNotIn('output_file.write_text(', sources)
 
