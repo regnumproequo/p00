@@ -20,12 +20,15 @@ bilinearly resamples the crop. Set `REFRESH_DATA = True` in that notebook to
 rebuild the archive. Full downloads are cached in ignored `.cache/terrain/`.
 Normal runs use the archive offline.
 
-The bundled crop and displayed map now cover 5 ? 5 km around the summit.
-The notebook bilinearly samples the crop to a 281 ? 281 display grid.
+The bundled source crop covers 5 × 5 km around the summit. The notebook
+displays only the central 2 × 2 km, isolating the main pyramid and its immediate
+flanks. It bilinearly samples this extent to a 113 × 113 display grid (~18 m
+spacing), retaining the previous sampling density. The source archive is unchanged.
 
 This is a digital surface model, not a survey of the summit. The displayed grid
-peaks at roughly 4,330 m; the separate 4,478 m marker is a reference elevation.
-The model has not been raised or warped to match it.
+peaks at roughly 4,330 m. The summit pin touches the highest displayed sample;
+its label retains 4,478 m as the independent reference elevation. The model
+has not been raised or warped to match that reference.
 
 Produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence
 and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA;
