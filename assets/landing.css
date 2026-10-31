@@ -44,7 +44,7 @@ h2 { font-size: clamp(2.8rem, 4.4vw, 4.2rem); line-height: 1.08; }
 .intro { padding: 3rem 0 7rem; }
 .intro-grid { display: grid; grid-template-columns: 1.08fr 1fr; gap: 3.5rem; align-items: start; }
 .intro h2 { margin-bottom: 2rem; }
-.intro figure img { display: block; width: 100%; height: auto; aspect-ratio: 1.5; object-fit: cover; }
+.intro figure img { display: block; width: 100%; height: auto; aspect-ratio: 1.5; object-fit: cover; filter: saturate(.72) brightness(.78) contrast(1.12); opacity: .85; }
 .intro figcaption { margin-top: .75rem; font-size: .75rem; color: #adb6c9; line-height: 1.5; }
 .intro-summary { font-size: 1.15rem; line-height: 1.7; color: #e0e3eb; max-width: 650px; margin-top: 1.75rem; }
 .facts { padding-top: 4.2rem; display: grid; gap: 2.4rem; }
